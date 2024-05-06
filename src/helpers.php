@@ -1,5 +1,7 @@
 <?php
 
+use Valinteca\Localization\Facades\Locale;
+
 if (! function_exists('locale')) {
     function locale(): Locale
     {
