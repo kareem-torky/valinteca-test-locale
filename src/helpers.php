@@ -1,7 +1,5 @@
 <?php
 
-namespace Valinteca\Localization;
-
 if (! function_exists('locale')) {
     function locale(): Locale
     {
