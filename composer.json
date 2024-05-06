@@ -1,16 +1,16 @@
 {
-    "name": "valinteca/msegat",
-    "description": "valinteca msegat",
+    "name": "valinteca-test/localization",
+    "description": "valinteca test localization",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Valinteca\\Msegat\\": "src/"
+            "Valinteca\\Localization\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Valinteca\\Msegat\\Tests\\": "tests/"
+            "Valinteca\\Localization\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Valinteca\\Msegat\\MsegatServiceProvider"
+                "Valinteca\\Localization\\LocalizationServiceProvider"
             ]  
         }
     },

@@ -1,10 +1,10 @@
 <?php
 
-namespace Valinteca\Msegat\Exceptions\Contracts;
+namespace Valinteca\Localization\Exceptions\Contracts;
 
 use Exception;
 
-abstract class MsegatException extends Exception
+abstract class LocalizationException extends Exception
 {
     /**
      * @param $e

@@ -1,6 +1,6 @@
 <?php
 
-namespace Valinteca\Msegat\Tests\Feature\Unit;
+namespace Valinteca\Localization\Tests\Feature\Unit;
 
 use Orchestra\Testbench\TestCase;
 

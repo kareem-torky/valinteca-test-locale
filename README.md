@@ -1,5 +1,5 @@
-## Msegat package
-A composer package from Valinteca that introduces an easy integration with [Msegat](https://www.msegat.com/index.php?lang=Ar) platform for Laravel applications.
+## Localization package
+A composer package from Valinteca that introduces an easy integration with [Localization](https://www.Localization.com/index.php?lang=Ar) platform for Laravel applications.
 
 ## Features
 - Send SMS messages
@@ -11,30 +11,30 @@ A composer package from Valinteca that introduces an easy integration with [Mseg
 
 ## Installation
 ```
-composer require valinteca/msegat
+composer require valinteca/Localization
 ```
 <br>
 
 To publish configurations:
 ```
-php artisan vendor:publish --provider="Valinteca\Msegat\MsegatServiceProvider"
+php artisan vendor:publish --provider="Valinteca\Localization\LocalizationServiceProvider"
 ```
-This will publish config file to config/msegat.php
+This will publish config file to config/Localization.php
 
 <br>
 
 Then add these keys to .env file:
 ```
-MSEGAT_USERNAME="VALUE_HERE" # From your msegat subscription
-MSEGAT_API_KEY="VALUE_HERE" # From your msegat subscription
-MSEGAT_SENDER_NAME="VALUE_HERE" # Custom sender name
-MSEGAT_LANG="VALUE_HERE" # Language ("En" or "Ar")
+Localization_USERNAME="VALUE_HERE" # From your Localization subscription
+Localization_API_KEY="VALUE_HERE" # From your Localization subscription
+Localization_SENDER_NAME="VALUE_HERE" # Custom sender name
+Localization_LANG="VALUE_HERE" # Language ("En" or "Ar")
 ```
 
 ## Usage
 
 ```php
-use Valinteca\Msegat\Facades\Msegat;
+use Valinteca\Localization\Facades\Localization;
 ```
 
 ### **Send message**
@@ -50,14 +50,14 @@ use Valinteca\Msegat\Facades\Msegat;
 ***Examples***
 * with default settings:
 ```php
-Msegat::to('05xxxxxxxx')
+Localization::to('05xxxxxxxx')
     ->message('hello world')
     ->send();
 ```
 * Custom sender: <br>
 Use *sender* method for custom sender name. If you didn't use this method then default sender name from config/env will be used.
 ```php
-Msegat::sender('another sender')
+Localization::sender('another sender')
     ->to('05xxxxxxxx')
     ->message('hello world')
     ->send();
@@ -65,7 +65,7 @@ Msegat::sender('another sender')
 * Multiple numbers: <br>
 Pass an array to *to* method.
 ```php
-Msegat::to(['05xxxxxxxx', '05xxxxxxxx'])
+Localization::to(['05xxxxxxxx', '05xxxxxxxx'])
     ->message('hello world')
     ->send();
 ```
@@ -73,13 +73,13 @@ Msegat::to(['05xxxxxxxx', '05xxxxxxxx'])
 Pass datetime to *at* method.
 ```php
 // Using string datetime format
-Msegat::to('05xxxxxxxx', '05xxxxxxxx')
+Localization::to('05xxxxxxxx', '05xxxxxxxx')
     ->message('hello world')
     ->at('2023-05-01 20:10:05')
     ->send();
 
 // Using carbon instance
-Msegat::to('05xxxxxxxx', '05xxxxxxxx')
+Localization::to('05xxxxxxxx', '05xxxxxxxx')
     ->message('hello world')
     ->at(now()->addMinutes(5))
     ->send();
@@ -94,7 +94,7 @@ Available options are:
 
     3- reqFilter: to filter the duplicated numbers (*true* or *false*, default is *true*)
 ```php
-Msegat::to('05xxxxxxxx')
+Localization::to('05xxxxxxxx')
     ->options([
         'reqBulkId' => true,
         'msgEncoding' => 'windows-1256',
@@ -111,7 +111,7 @@ Personalized messages are message with different SMS content for each number in 
 Message body should contain the message body including the variables that should be between curly brackets {}.
 
 ```php
-Msegat::to(['05xxxxxxxx', '05yyyyyyyy'])
+Localization::to(['05xxxxxxxx', '05yyyyyyyy'])
     ->message('Hello {name}. Your order {order} will be delivered soon')
     ->sendPersonalized([
         ['name' => 'Mohammed', 'order' => '123'],
@@ -124,35 +124,35 @@ Msegat::to(['05xxxxxxxx', '05yyyyyyyy'])
 ```
 
 ### **Send test message**
-You can test Msegat API for free . You will get free sms every day . To test service you can send sms using *sendTestMessage* method.
+You can test Localization API for free . You will get free sms every day . To test service you can send sms using *sendTestMessage* method.
 
 This method uses predefined sender name and message text. so you will define numbers only.
 ```php
-Msegat::to('05xxxxxxxx')
+Localization::to('05xxxxxxxx')
     ->sendTestMessage();
 ```
 
 ### **Balance Inquiry**
 To inquire about your balance use *getBalance* method
 ```php
-Msegat::getBalance();
+Localization::getBalance();
 ```
 
 ### **Get messages**
 To get messages for bulk ID use *forbulkId* method with *getMessages*. The result is paginated and default return is page 1.
 ```php
-Msegat::forBulkId('bulk-id-returned-from-send-method')
+Localization::forBulkId('bulk-id-returned-from-send-method')
     ->getMessages();
 ```
 To define page number use *page* method:
 ```php
-Msegat::forBulkId('bulk-id-returned-from-send-method')
+Localization::forBulkId('bulk-id-returned-from-send-method')
     ->page(2)
     ->getMessages();
 ```
 To define limit use *limit* method:
 ```php
-Msegat::forBulkId('bulk-id-returned-from-send-method')
+Localization::forBulkId('bulk-id-returned-from-send-method')
     ->page(1)
     ->limit(5)
     ->getMessages();
@@ -160,7 +160,7 @@ Msegat::forBulkId('bulk-id-returned-from-send-method')
 
 ### **Calculate message cost**
 ```php
-Msegat::to(['05xxxxxxxx', '05yyyyyyyy'])
+Localization::to(['05xxxxxxxx', '05yyyyyyyy'])
     ->message('this is message')
     ->calculateCost();
 ```
@@ -176,7 +176,7 @@ Msegat::to(['05xxxxxxxx', '05yyyyyyyy'])
 
 ### **Get user balance**
 ```php
-Msegat::getBalance();
+Localization::getBalance();
 ```
 *Response:*
 ```json

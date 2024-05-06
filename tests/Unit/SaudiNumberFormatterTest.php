@@ -1,10 +1,10 @@
 <?php
 
-namespace Valinteca\Msegat\Tests\Unit;
+namespace Valinteca\Localization\Tests\Unit;
 
 use Orchestra\Testbench\TestCase;
-use Valinteca\Msegat\Exceptions\InvalidNumberFormatException;
-use Valinteca\Msegat\Services\SaudiNumberFormatter;
+use Valinteca\Localization\Exceptions\InvalidNumberFormatException;
+use Valinteca\Localization\Services\SaudiNumberFormatter;
 
 class SaudiNumberFormatterTest extends TestCase
 {
